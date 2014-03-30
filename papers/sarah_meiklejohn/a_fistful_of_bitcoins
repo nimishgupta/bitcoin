@@ -73,3 +73,9 @@ OBSERVATIONS:
 
 
 - The bitcoins can only be spent in units in which they were received in a transaction. Consequently, a transaction has a change address that points back to sender of bitcoin to which the change is transferred from the transaction.
+
+
+- Satoshi dice involved 10,000 transactions on a daily basis when it was initially launched.
+
+
+- Money exchange services still don't deal in such a high volume that money can be laundered via them
