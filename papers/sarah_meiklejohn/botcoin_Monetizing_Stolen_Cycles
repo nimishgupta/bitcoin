@@ -1,0 +1,60 @@
+Title: Botcoin: Monetizing Stolen Cycles
+
+Link:  http://cseweb.ucsd.edu/~snoeren/papers/botcoin-ndss14.pdf
+
+Problem solved:
+  Analyzing Bitcoin mining malware, its infrastructure and modus-operandi. Deduce the amount of bitcoin mined by bots by analyzing bitcoin transaction blockchain.
+
+
+MOTIVATION:
+  Bitcoin mining through malware is interesting as it is a compute intensive activity and there is greater risk of detection. On the other hand, it does not interfere much with other malware activities like phishing, click fraud etc. There is high risk and high reward at the same time. Authors want to understand the balance of added cost and risk versus potential revenue from Bitcoin mining.
+
+Technical Contributions:
+
+  - Identify and analyze malware involved in Bitcoin mining and how it operates
+  - Estimate value extracted from compromised PCs through mining (Bitcoin mining alone is unlikely to cover costs of a botnet, but may be attractive as a secondary activity for large botnets with already established primary monetization schemes)
+
+
+APPROACH:
+  - Authors collect Bitcoin mining malware from multiple sources (security industry malware database, thread experts and Emerging Threats.) 
+  - For each sample authors analyze how it mines bitcoins by sandboxed execution and binary analysis and extract mining credentials
+
+  Detection
+  - Network traffic and protocol analysis of malwares to detect mining (mining involves HTTP trafic)
+  - Command and control channel. Some bots get mining credentials over a separate command and control channel instead of embedding them in the binary.  Ex: Fareit botnet uses Dropbox and Pastebin Web services to disseminate mining credentials. The information is obfuscated varying at different levels. Some obfuscation algorithms were found to be easy to reverse engineer.
+
+  
+  Earnings of malware
+    To track earning of bitcoin malware following techniques are used
+      - Mapping miner to wallet addresses. Some pool operators provide information. Some pools make the statistics visible publically in form of leader boards. 
+      - Block chain analyis (all transactions are public and contain wallet addresses of both sender and receiver)
+      - Clustering wallet address using clustering techniques described in previous paper
+
+  Pool Proxy detection
+     - Cross login test: Creating accounts with miner and try to connect with suspected proxies
+     - Passive DNS: Linking ip addresses of dark pools with DNS records history
+     - Block reversal: exploits frequency of getwork call
+     - Leaked data about suspected mining botnets
+    
+
+
+SUMMARY:
+  Rising cost of Bitcoin (at the time of paper) is a strong motivation to mine through botnets. Mining through botnet is mostly done via a publically available pool as it provides a layer of indirection between botnet and payee apart from the benefit of uniform and regular payouts.
+
+  Botnet Mining techniques
+    - Direct pool mining : Distibute a miner executable in a wrapped script that specifies all the parameters required to mine on a mining pool. No cost is involved in developing miner software. Example: FeodalCash family of botnets
+
+    Mining pools have become alert enough to detect direct mining, as it involves a large number of hosts, all using the same account, with each host providing very little CPU power for the mining task. Once detected, most pool operators will ban such users. One banned, the botnet becomes useless as there is no way for botnet owner to change the botnet mining pool credentials.
+
+    - Proxied pool mining: Overcomes few drawbacks of direct pool mining. Botmaster proxies connections through a server he controls. The mining pool network uses HTTP as a transport and a botmaster can simply employ an HTTP proxy (e.g. nginx). Use of proxy offers few advantages. Hiding of bots IP addresses. All traffic seems to originate from the same server, making botnet seem like a single powerful miner. Using a proxy also adds a level of indirection as botmaster can switch mining credentials on proxy server if caught. 
+
+    A botmaster can also employ a smarter proxy that does more work in thwarting botnet detection. This kind of proxy requests work from a pool like a normal worker but then split it among bots.
+
+    - Dark pool mining: In this, the botmaster has to maintain his own pool server. The pool server must participate directly in bitcoin peer-to-peer network. In addition to infrastructure investment a botmaster looses the assurity of regular and uniform payout.
+
+
+CONCLUSION:
+
+  - Authors estimate that a network of 10,000 bots with average computing power will generate about $75 per day in mining bitcoins (1100$ per bitcoins). Compromized PCs in Asia cost $5 to $10 per 1000. Neglecting one time costs of infrastructure and development, it was possible to break even anywhere between 1 day and 25 days of continuous operation. Bitcoin does not interfere with other activities running via botnet like spamming or click fraud, since it exploits a previously untapped resource: computation. Hence it might prove marginally profitable to run mining alongside other botnet activities. 
+
+
