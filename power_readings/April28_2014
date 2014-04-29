@@ -1,0 +1,48 @@
+Start 12:25
+End 1:25
+
+nimish@nimish-UX31A:/media/data/work/hacking/umasscoin/coin_impl/bitcoind-stable-umass/src$ ./bitcoind -testnet getmininginfo
+{
+"blocks" : 1,
+  "currentblocksize" : 1000,
+  "currentblocktx" : 0,
+  "difficulty" : 1.00000000,
+  "errors" : "",
+  "generate" : true,
+  "genproclimit" : -1,
+  "hashespersec" : 2162147,
+  "pooledtx" : 0,
+  "testnet" : true
+  }
+nimish@nimish-UX31A:/media/data/work/hacking/umasscoin/coin_impl/bitcoind-stable-umass/src$ ./bitcoind -testnet getmininginfo
+{
+  "blocks" : 1,
+    "currentblocksize" : 1000,
+    "currentblocktx" : 0,
+    "difficulty" : 1.00000000,
+    "errors" : "",
+    "generate" : true,
+    "genproclimit" : -1,
+    "hashespersec" : 2162147,
+    "pooledtx" : 0,
+    "testnet" : true
+}
+nimish@nimish-UX31A:/media/data/work/hacking/umasscoin/coin_impl/bitcoind-stable-umass/src$ ./bitcoind -testnet getmininginfo
+{
+  "blocks" : 4,
+    "currentblocksize" : 1000,
+    "currentblocktx" : 0,
+    "difficulty" : 1.00000000,
+    "errors" : "",
+    "generate" : true,
+    "genproclimit" : -1,
+    "hashespersec" : 2096627,
+    "pooledtx" : 0,
+    "testnet" : true
+}
+
+
+
+
+
+Power used : 26 Watts
