@@ -53,6 +53,11 @@
       - Genesis
       - Peers
     - Users and transactions among them
+      o Perfroming a transaction
+        - change transaction  
+      o Double Spending(if possible)
+      o transaction validation
+      0 wallet setup
     - Power measurements & bitcoin mining
     - Difficulty level variance
 
