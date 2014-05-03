@@ -1,0 +1,6 @@
+nimish@nimish-UX31A:~/work/hacking/umasscoin/coin_impl/bitcoind-stable-umass/src$./bitcoind getbalance
+0.00000000
+
+
+nimish@nimish-UX31A:~/work/hacking/umasscoin/coin_impl/bitcoind-stable-umass/src$ ./bitcoind sendtoaddress n4CFSngUFmBDiA5azRvfc91PPUNn1Bnkan 1 "first transaction"
+error: {"code":-4,"message":"Insufficient funds"}
