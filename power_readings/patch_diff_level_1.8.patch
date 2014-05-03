@@ -1,0 +1,66 @@
+diff --git coin_impl/bitcoind-stable-umass/src/bitcoind coin_impl/bitcoind-stable-umass/src/bitcoind
+index 7c4954a..63cedf2 100755
+Binary files coin_impl/bitcoind-stable-umass/src/bitcoind and coin_impl/bitcoind-stable-umass/src/bitcoind differ
+diff --git coin_impl/bitcoind-stable-umass/src/main.cpp coin_impl/bitcoind-stable-umass/src/main.cpp
+index 6f3c1e7..2f940be 100644
+--- coin_impl/bitcoind-stable-umass/src/main.cpp
++++ coin_impl/bitcoind-stable-umass/src/main.cpp
+@@ -35,7 +35,7 @@ CTxMemPool mempool;
+ unsigned int nTransactionsUpdated = 0;
+ 
+ map<uint256, CBlockIndex*> mapBlockIndex;
+-uint256 hashGenesisBlock("0x00000000784dd97b3c95225f368e10f3c82f65696daddf4d08edecb57d59edc1");
++uint256 hashGenesisBlock("0x000000002290b3e9b6b6c414ad9a85d2e9b35a0c7e4f531f12728bf918ae3fbb");
+ static CBigNum bnProofOfWorkLimit(~uint256(0) >> 32);
+ CBlockIndex* pindexGenesisBlock = NULL;
+ int nBestHeight = -1;
+@@ -2757,7 +2757,7 @@ bool LoadBlockIndex()
+         pchMessageStart[1] = 0x11;
+         pchMessageStart[2] = 0x09;
+         pchMessageStart[3] = 0x07;
+-        hashGenesisBlock = uint256("0x00000000784dd97b3c95225f368e10f3c82f65696daddf4d08edecb57d59edc1");
++        hashGenesisBlock = uint256("0x000000002290b3e9b6b6c414ad9a85d2e9b35a0c7e4f531f12728bf918ae3fbb");
+     }
+ 
+     //
+@@ -2794,7 +2794,7 @@ bool InitBlockIndex() {
+         CTransaction txNew;
+         txNew.vin.resize(1);
+         txNew.vout.resize(1);
+-        txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
++        txNew.vin[0].scriptSig = CScript() << /*486604799*/ 486575299 << CBigNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
+         txNew.vout[0].nValue = 50 * COIN;
+         txNew.vout[0].scriptPubKey = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG;
+         CBlock block;
+@@ -2802,15 +2802,17 @@ bool InitBlockIndex() {
+         block.hashPrevBlock = 0;
+         block.hashMerkleRoot = block.BuildMerkleTree();
+         block.nVersion = 1;
+-        block.nTime    = 1396395728;
+-        block.nBits    = 0x1d00ffff;
+-        block.nNonce   = 1739457018;
++        block.nTime  = 1398826067;
++        // block.nBits    = 0x1d00ffff;
++        block.nBits = 0x1d008cc3; // difficulty level  1.818648
++        // block.nNonce   = 1739457018;
++        block.nNonce = 3466244396;
+ 
+         if (fTestNet)
+         {
+             // block.nTime    = 1396395728;
+-            block.nTime    = 1396395728;
+-            block.nNonce   = 1739457018;
++            block.nTime  = 1398826067;
++            block.nNonce = 3466244396;
+         }
+ 
+         //// debug print
+@@ -2818,7 +2820,7 @@ bool InitBlockIndex() {
+         printf("%s\n", hash.ToString().c_str());
+         printf("%s\n", hashGenesisBlock.ToString().c_str());
+         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
+-        assert(block.hashMerkleRoot == uint256("0xf29299da7b9c5c075ae80fc6ce84862b2c470ab5fe1f4fcacc8283740000529c"));
++        assert(block.hashMerkleRoot == uint256("0x7ee202371c00d2df0d9150c1c3e05e8184d45abc4b6dca3be3b8ab914500b057"));
+         block.print();
+         assert(hash == hashGenesisBlock);
+ 
