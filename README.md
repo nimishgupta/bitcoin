@@ -1,7 +1,7 @@
 UMassCoin
 ================================================
 
-UMass Coin is an alternate crypto-currency forked from bitcoin core. This is mostly an experiment to see bitcoin in action. The parameters of bitcoin are adjusted as to see bitcoin evolution in short time.
+UMass Coin is an alternate crypto-currency forked from bitcoin core. This is mostly an experiment to see bitcoin in action. The parameters of Bitcoin are adjusted as to see bitcoin evolution in short time.
 
 Acknowledgements:
 
