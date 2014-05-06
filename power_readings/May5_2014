@@ -1,0 +1,22 @@
+Start 7:30 pm
+End : 10:30 pm
+
+nimish@nimish-UX31A:~/work/hacking/umasscoin/coin_impl/bitcoind-stable-umass/src$ ./bitcoind getbalance
+200.00000000
+nimish@nimish-UX31A:~/work/hacking/umasscoin/coin_impl/bitcoind-stable-umass/src$ ./bitcoind getmininginfo
+{
+  "blocks" : 6,
+    "currentblocksize" : 1000,
+    "currentblocktx" : 0,
+    "difficulty" : 1.00000000,
+    "errors" : "",
+    "generate" : false,
+    "genproclimit" : -1,
+    "hashespersec" : 0,
+    "pooledtx" : 0,
+    "testnet" : true
+}
+
+
+
+Power Used : 41 Watts
